@@ -23,17 +23,37 @@ namespace CodingChallenge.CardGame.Implementations
 
         public void Shuffle()
         {
-            throw new NotImplementedException();
+            pack = PopulateCards();
+            var numberOfCardSwaps = 1000;
+
+            for (var i = 0; i < numberOfCardSwaps; i++)
+            {
+                var swappedCardPosition = new Random().Next(51);
+                ICard swappedCardLifted = pack[swappedCardPosition];
+                pack.RemoveAt(swappedCardPosition);
+                pack.Insert(new Random().Next(51), swappedCardLifted);
+            }
         }
 
         public ICard TakeCardFromTopOfPack()
         {
-            throw new NotImplementedException();
+            var cardPosition = pack.Count - 1;
+            ICard cardToReturn = pack[cardPosition];
+            pack.RemoveAt(cardPosition);
+            return cardToReturn;
         }
 
         private static List<ICard> PopulateCards()
         {
-            throw new NotImplementedException();
+            var returnPack = new List<ICard>();
+            foreach (Suit suit in Enum.GetValues(typeof(Suit)))
+            {
+                foreach (Value value in Enum.GetValues(typeof(Value)))
+                {
+                    returnPack.Add(new Card(suit, value));
+                }
+            }
+            return returnPack;
         }
     }
 }

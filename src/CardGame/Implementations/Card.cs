@@ -16,7 +16,7 @@ namespace CodingChallenge.CardGame.Implementations
 
         public bool Equals(ICard other)
         {
-            return true;
+            return Suit == other.Suit && Value == other.Value;
         }
     }
 }
