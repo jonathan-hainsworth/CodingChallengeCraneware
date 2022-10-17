@@ -24,14 +24,14 @@ namespace CodingChallenge.CardGame.Implementations
         public void Shuffle()
         {
             pack = PopulateCards();
-            var numberOfCardSwaps = 1000;
+            var numberOfCardSwaps = 1000000;
 
             for (var i = 0; i < numberOfCardSwaps; i++)
             {
-                var swappedCardPosition = new Random().Next(51);
+                var swappedCardPosition = new Random().Next(52);
                 ICard swappedCardLifted = pack[swappedCardPosition];
                 pack.RemoveAt(swappedCardPosition);
-                pack.Insert(new Random().Next(51), swappedCardLifted);
+                pack.Insert(new Random().Next(52), swappedCardLifted);
             }
         }
 
